@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+    
+
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">New Post</div>
+        <div class="card-body text-primary">
+            <form action="/posts/create" method="post">
+                <div class="form-group">
+                    <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="description" name="description" placeholder="Description" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="image_url" name="image_url" placeholder="Image" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary mt-5">Save</button>
+            </form>
+        </div>
+    </div>
+    
+
+<%- include('partials/footer') %>

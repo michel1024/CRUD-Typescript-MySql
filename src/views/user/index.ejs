@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+    <h1 class="text-center">Users</h1>
+
+    <div class="container">
+        <a href="/users/create" class="btn btn-outline-primary mt-4" ><i class='bx bxs-plus-circle bx-md'></i></a>
+
+        <table class="table table-bordered table-striped text-center mt-4">
+            <thead>
+                <tr class="bg-primary text-white">
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((user) => { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.user %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.password %></td>
+                        <td><%= user.role %></td>
+                        <td>
+                            <a href="/users/edit/<%= user.id %>" class="btn btn-outline-info">editar</a>
+                            <a id="btnDeletePost" href="/users/delete/<%= user.id %>" class="btn btn-outline-danger">eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+<%- include('../partials/footer') %>

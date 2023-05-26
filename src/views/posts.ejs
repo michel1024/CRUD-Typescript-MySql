@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+    <h1 class="text-center"><i class='bx bx-store-alt'></i> Posts</h1>
+
+    <div class="container">
+        <a href="/posts/create" class="btn btn-outline-primary mt-4" ><i class='bx bxs-plus-circle bx-md'></i></a>
+
+        <table class="table table-bordered table-striped text-center mt-4">
+            <thead>
+                <tr class="bg-primary text-white">
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((post) => { %>
+                    <tr>
+                        <td><%= post.id %></td>
+                        <td><%= post.title %></td>
+                        <td><%= post.description %></td>
+                        <td><%= post.image_url %></td>
+                        <td>
+                            <a href="/posts/edit/<%= post.id %>" class="btn btn-outline-info">editar</a>
+                            <a id="btnDeletePost" href="/posts/delete/<%= post.id %>" class="btn btn-outline-danger">eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <% if (action == 'create') { %>
+        <%- include('partials/modalFormCreate') %>
+    <% } %>
+
+    <% if (action == 'edit') { %>
+        <%- include('partials/modalFormEdit') %>
+    <% } %>
+
+    <script src="/static/posts.js"></script>
+<%- include('partials/footer') %>
