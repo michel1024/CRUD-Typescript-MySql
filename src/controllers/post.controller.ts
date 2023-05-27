@@ -25,20 +25,17 @@ export async function viewCreatePost(req: Request, res: Response){
 
 export async function createPost(req: Request, res: Response){
     const newPost: Post = req.body;
-    console.log(newPost);
     const conn = await connect();
     await conn.query("INSERT INTO posts SET ?", [newPost]);
     return res.redirect("/posts")
 }
 
 export async function viewEditPost(req: Request, res: Response){
-    console.log(req.params);
     
     const id = req.params.id;
     // const action = req.params.action;
     const conn = await connect();
     const result = await conn.query("SELECT * FROM posts WHERE id = ?", [id]);
-    console.log(result[0]);
     
     res.render("posts", {data: result[0], action: "edit"});
 }

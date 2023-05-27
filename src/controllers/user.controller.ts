@@ -19,7 +19,6 @@ export async function createUser(req: Request, res: Response){
     const newUser: User = req.body;
     const conn = await connect();
     const user = await conn.query("INSERT INTO users SET ?", [newUser]);
-    console.log({user});
     
     return res.redirect("/users");
 }

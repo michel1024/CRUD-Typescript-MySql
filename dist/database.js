@@ -14,10 +14,10 @@ const promise_1 = require("mysql2/promise");
 function connect() {
     return __awaiter(this, void 0, void 0, function* () {
         const connection = yield (0, promise_1.createPool)({
-            host: "localhost",
-            user: "root",
-            database: "ts_mysql",
-            connectionLimit: 10
+            host: process.env.DB_HOST || "localhost",
+            user: process.env.DB_USER || "root",
+            database: process.env.DB_NAME || "ts_mysql",
+            password: process.env.DB_PASSWORD || "",
         });
         return connection;
     });
