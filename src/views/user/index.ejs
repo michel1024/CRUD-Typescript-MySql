@@ -27,12 +27,20 @@
                         <td><%= user.role %></td>
                         <td>
                             <a href="/users/edit/<%= user.id %>" class="btn btn-outline-info">editar</a>
-                            <a id="btnDeletePost" href="/users/delete/<%= user.id %>" class="btn btn-outline-danger">eliminar</a>
+                            <a href="/users/delete/<%= user.id %>" class="btn btn-outline-danger">eliminar</a>
                         </td>
                     </tr>
                 <% }) %>
             </tbody>
         </table>
     </div>
+
+    <% if(action == 'edit'){ %>
+        <%- include('modalFormEdit') %>
+    <% } %>
+
+    <% if(action == 'create'){ %>
+        <%- include('modalFormCreate') %>
+    <% } %>
 
 <%- include('../partials/footer') %>

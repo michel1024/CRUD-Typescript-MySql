@@ -24,13 +24,6 @@ export async function viewCreatePost(req: Request, res: Response){
 }
 
 export async function createPost(req: Request, res: Response){
-    const title = req.body.title;
-    const description = req.body.description;
-    const image_url = req.body.image_url;
-
-    console.log(req.body);
-    
-    
     const newPost: Post = req.body;
     console.log(newPost);
     const conn = await connect();
@@ -42,12 +35,12 @@ export async function viewEditPost(req: Request, res: Response){
     console.log(req.params);
     
     const id = req.params.id;
-    const action = req.params.action;
+    // const action = req.params.action;
     const conn = await connect();
     const result = await conn.query("SELECT * FROM posts WHERE id = ?", [id]);
     console.log(result[0]);
     
-    res.render("posts", {data: result[0], action});
+    res.render("posts", {data: result[0], action: "edit"});
 }
 
 export async function editPost(req: Request, res: Response){
@@ -66,6 +59,7 @@ export async function editPost(req: Request, res: Response){
 
 export async function deletePost(req: Request, res: Response){
     const id = req.params.id;
+    
     const conn = await connect();
     await conn.query("DELETE FROM posts WHERE id = ?", [id]);
     return res.redirect("/posts");

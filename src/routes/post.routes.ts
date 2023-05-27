@@ -13,7 +13,7 @@ router.route("/create")
 // .get(viewCreatePost)
 .post(createPost)
 
-router.route("/:action/:id")
+router.route("/edit/:id")
 .get(viewEditPost)
 
 router.route("/update")

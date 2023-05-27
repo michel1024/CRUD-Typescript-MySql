@@ -2,9 +2,11 @@ import { createPool } from "mysql2/promise";
 
 export async function connect(){
     const connection = await createPool({
-        host: "localhost",
-        user: "root",
-        database: "ts_mysql",
+        host: process.env.DB_HOST || "localhost",
+        user: process.env.DB_USER || "root",
+        database: process.env.DB_NAME || "ts_mysql",
+        password: process.env.DB_PASSWORD || "",
+        port: 3306,
         connectionLimit: 10
     });
 
