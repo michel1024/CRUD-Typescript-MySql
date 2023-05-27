@@ -6,6 +6,7 @@ export async function connect(){
         user: process.env.DB_USER || "root",
         database: process.env.DB_NAME || "ts_mysql",
         password: process.env.DB_PASSWORD || "",
+        port: 7690
     });
 
     return connection;
